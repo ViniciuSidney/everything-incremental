@@ -1,0 +1,106 @@
+/* ============================= */
+/* Reset */
+/* ============================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ============================= */
+/* Base */
+/* ============================= */
+
+body {
+  min-height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: #222222;
+}
+
+/* ============================= */
+/* Tela principal */
+/* ============================= */
+
+.game-screen {
+  min-height: 100vh;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #ffffff 0%,
+      #ffffff 60%,
+      #eeeeee 100%
+    );
+}
+
+/* ============================= */
+/* Contador */
+/* ============================= */
+
+.counter-area {
+  margin-top: 48px;
+  text-align: center;
+}
+
+.points-display {
+  padding: 10px 18px;
+
+  border: 1px solid #999999;
+  border-radius: 4px;
+
+  background: #f8f8f8;
+  color: #222222;
+
+  font-size: 1rem;
+  font-weight: 400;
+
+  min-width: 120px;
+}
+
+/* ============================= */
+/* Área de ação */
+/* ============================= */
+
+.action-area {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+}
+
+/* ============================= */
+/* Botão inicial */
+/* ============================= */
+
+.main-button {
+  padding: 10px 18px;
+
+  border: 1px solid #999999;
+  border-radius: 4px;
+
+  background: #f8f8f8;
+  color: #222222;
+
+  font: inherit;
+  font-size: 1rem;
+
+  cursor: pointer;
+}
+
+.main-button:hover {
+  background: #eeeeee;
+}
+
+.main-button:active {
+  background: #dddddd;
+}
