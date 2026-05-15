@@ -1,13 +1,25 @@
-const pointsCounter = document.getElementById("pointsCounter");
+import { addPoint } from "./resources.js";
+import { updateUI } from "./ui.js";
+import { checkProgression } from "./progression.js";
+import { updateVisualState } from "./visual.js";
+
 const mainButton = document.getElementById("mainButton");
 
-let points = 0;
-
-mainButton.addEventListener("click", () => {
-  points += 1;
-  updateInterface();
-});
-
-function updateInterface() {
-  pointsCounter.textContent = points;
+function initGame() {
+  setupEvents();
+  updateVisualState();
+  updateUI();
 }
+
+function setupEvents() {
+  mainButton.addEventListener("click", handleMainButtonClick);
+}
+
+function handleMainButtonClick() {
+  addPoint();
+
+  checkProgression();
+  updateUI();
+}
+
+initGame();
