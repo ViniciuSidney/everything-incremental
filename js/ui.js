@@ -1,6 +1,6 @@
 import { getResource } from "./resources.js";
 import { isSystemUnlocked } from "./unlocks.js";
-import { gameState } from "./state.js";
+import { getCurrentMessage, hasMessage } from "./messages.js";
 
 const elements = {
   pointsCounter: document.getElementById("pointsCounter"),
@@ -19,8 +19,7 @@ function updatePointsCounter() {
 
 function updateMessageArea() {
   const messagesUnlocked = isSystemUnlocked("messagesUnlocked");
-  const hasMessage = gameState.messages.currentMessage.trim() !== "";
 
-  elements.messageArea.hidden = !messagesUnlocked || !hasMessage;
-  elements.gameMessage.textContent = gameState.messages.currentMessage;
+  elements.messageArea.hidden = !messagesUnlocked || !hasMessage();
+  elements.gameMessage.textContent = getCurrentMessage();
 }
