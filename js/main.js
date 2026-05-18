@@ -1,6 +1,4 @@
-import { addPoint } from "./resources.js";
-import { registerClick } from "./stats.js";
-import { checkMilestones } from "./milestones.js";
+import { performMainButtonAction } from "./actions.js";
 import { updateUI } from "./ui.js";
 import { updateVisualState } from "./visual.js";
 
@@ -14,15 +12,7 @@ function initGame() {
 }
 
 function setupEvents() {
-  mainButton.addEventListener("click", handleMainButtonClick);
-}
-
-function handleMainButtonClick() {
-  registerClick();
-  addPoint(1);
-
-  checkMilestones();
-  updateUI();
+  mainButton.addEventListener("click", performMainButtonAction);
 }
 
 initGame();
