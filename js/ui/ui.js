@@ -1,12 +1,7 @@
 import { getResource } from '../systems/resources.js';
 import { isSystemUnlocked } from '../systems/unlocks.js';
 import { getCurrentMessage, hasMessage } from '../systems/messages.js';
-
-const elements = {
-	pointsCounter: document.getElementById('pointsCounter'),
-	messageArea: document.getElementById('messageArea'),
-	gameMessage: document.getElementById('gameMessage'),
-};
+import { UI_ELEMENTS } from './uiElements.js';
 
 export function updateUI() {
 	updatePointsCounter();
@@ -14,12 +9,12 @@ export function updateUI() {
 }
 
 function updatePointsCounter() {
-	elements.pointsCounter.textContent = getResource('points');
+	UI_ELEMENTS.pointsCounter.textContent = getResource('points');
 }
 
 function updateMessageArea() {
 	const messagesUnlocked = isSystemUnlocked('messagesUnlocked');
 
-	elements.messageArea.hidden = !messagesUnlocked || !hasMessage();
-	elements.gameMessage.textContent = getCurrentMessage();
+	UI_ELEMENTS.messageArea.hidden = !messagesUnlocked || !hasMessage();
+	UI_ELEMENTS.gameMessage.textContent = getCurrentMessage();
 }
