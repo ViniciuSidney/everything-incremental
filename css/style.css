@@ -79,7 +79,7 @@ body {
 }
 
 /* ============================= */
-/* Botão inicial */
+/* Botão principal */
 /* ============================= */
 
 .main-button {
@@ -106,15 +106,41 @@ body {
 }
 
 /* ============================= */
+/* Mensagens desbloqueáveis */
+/* ============================= */
+
+.message-area {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  max-width: 90%;
+  padding: 10px 16px;
+
+  border: 1px solid #999999;
+  border-radius: 4px;
+
+  background: #f8f8f8;
+  color: #333333;
+
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* ============================= */
 /* Estados visuais */
 /* ============================= */
 
 body[data-visual-level="0"] .points-display,
-body[data-visual-level="0"] .main-button {
+body[data-visual-level="0"] .main-button,
+body[data-visual-level="0"] .message-area {
   border-radius: 4px;
 }
 
 body[data-visual-level="1"] .points-display,
-body[data-visual-level="1"] .main-button {
+body[data-visual-level="1"] .main-button,
+body[data-visual-level="1"] .message-area {
   border-radius: 999px;
 }

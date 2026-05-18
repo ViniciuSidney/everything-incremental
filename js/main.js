@@ -1,12 +1,14 @@
 import { addPoint } from "./resources.js";
+import { registerClick } from "./stats.js";
+import { checkMilestones } from "./milestones.js";
 import { updateUI } from "./ui.js";
-import { checkProgression } from "./progression.js";
 import { updateVisualState } from "./visual.js";
 
 const mainButton = document.getElementById("mainButton");
 
 function initGame() {
   setupEvents();
+
   updateVisualState();
   updateUI();
 }
@@ -16,9 +18,10 @@ function setupEvents() {
 }
 
 function handleMainButtonClick() {
-  addPoint();
+  registerClick();
+  addPoint(1);
 
-  checkProgression();
+  checkMilestones();
   updateUI();
 }
 

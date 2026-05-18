@@ -5,7 +5,7 @@ export function getResource(resourceName) {
 }
 
 export function addResource(resourceName, amount) {
-  if (!gameState.resources[resourceName]) {
+  if (!(resourceName in gameState.resources)) {
     gameState.resources[resourceName] = 0;
   }
 
@@ -23,9 +23,8 @@ export function spendResource(resourceName, amount) {
   return true;
 }
 
-export function addPoint() {
-  addResource("points", 1);
+export function addPoint(amount = 1) {
+  addResource("points", amount);
 
-  gameState.stats.totalClicks += 1;
-  gameState.stats.totalPointsEarned += 1;
+  gameState.stats.totalPointsEarned += amount;
 }
