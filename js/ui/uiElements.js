@@ -14,4 +14,9 @@ export const UI_ELEMENTS = {
 
 	messageArea: getElement('#messageArea'),
 	gameMessage: getElement('#gameMessage'),
+
+	observationArea: getElement('#observationArea'),
+	totalClicksDisplay: getElement('#totalClicksDisplay'),
+	totalPointsEarnedDisplay: getElement('#totalPointsEarnedDisplay'),
+	unlockedMilestonesDisplay: getElement('#unlockedMilestonesDisplay'),
 };

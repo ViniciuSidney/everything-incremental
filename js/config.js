@@ -12,6 +12,7 @@ export const GAME_CONFIG = {
 	milestones: {
 		firstMessagePoints: 10,
 		firstVisualClicks: 25,
+		observationClicks: 50,
 	},
 
 	visual: {

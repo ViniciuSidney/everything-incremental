@@ -3,6 +3,7 @@ import { GAME_CONFIG } from '../config.js';
 import {
 	unlockFirstMessage,
 	unlockFirstVisualChange,
+   unlockObservationSystem,
 } from '../systems/milestoneEffects.js';
 
 export const milestones = [
@@ -22,5 +23,14 @@ export const milestones = [
 		condition: (state) =>
 			state.stats.totalClicks >= GAME_CONFIG.milestones.firstVisualClicks,
 		effect: unlockFirstVisualChange,
+	},
+
+	{
+		id: 'observation',
+		name: 'Observação',
+		description: 'Desbloqueia o sistema de observação.',
+		condition: (state) =>
+			state.stats.totalClicks >= GAME_CONFIG.milestones.observationClicks,
+		effect: unlockObservationSystem,
 	},
 ];
