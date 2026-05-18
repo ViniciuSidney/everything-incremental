@@ -1,5 +1,5 @@
 import { gameState } from "./state.js";
-import { setVisualLevel } from "./visual.js";
+import { setVisualLevel } from "../visual.js";
 
 export function checkProgression() {
   checkVisualProgression();

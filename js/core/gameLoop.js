@@ -1,5 +1,5 @@
-import { checkMilestones } from './milestones.js';
-import { updateUI } from './ui.js';
+import { checkMilestones } from '../systems/milestones.js';
+import { updateUI } from '../ui/ui.js';
 
 let lastUpdateTime = Date.now();
 
@@ -28,5 +28,5 @@ function updateGame(deltaTime) {
 }
 
 function updatePassiveSystems(deltaTime) {
-   // Example: Update resource generation
+	// Sistemas passivos futuros entram aqui.
 }
