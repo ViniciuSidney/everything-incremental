@@ -28,6 +28,7 @@ export const gameState = {
   messages: {
     feed: [],
     history: [],
+    version: 0,
   },
 
   records: {

@@ -15,6 +15,7 @@ export function showMessage(text) {
 	gameState.messages.history.push(message);
 
 	limitVisibleMessages();
+	increaseMessagesVersion();
 	scheduleMessageRemoval(message.id);
 }
 
@@ -26,8 +27,13 @@ export function hasMessages() {
 	return gameState.messages.feed.length > 0;
 }
 
+export function getMessagesVersion() {
+	return gameState.messages.version;
+}
+
 export function clearMessages() {
 	gameState.messages.feed = [];
+	increaseMessagesVersion();
 }
 
 function createMessage(text) {
@@ -50,11 +56,12 @@ function startMessageExit(messageId) {
 		return item.id === messageId;
 	});
 
-	if (!message) {
+	if (!message || message.isLeaving) {
 		return;
 	}
 
 	message.isLeaving = true;
+	increaseMessagesVersion();
 
 	setTimeout(() => {
 		removeMessage(messageId);
@@ -62,9 +69,15 @@ function startMessageExit(messageId) {
 }
 
 function removeMessage(messageId) {
+	const previousLength = gameState.messages.feed.length;
+
 	gameState.messages.feed = gameState.messages.feed.filter((message) => {
 		return message.id !== messageId;
 	});
+
+	if (gameState.messages.feed.length !== previousLength) {
+		increaseMessagesVersion();
+	}
 }
 
 function limitVisibleMessages() {
@@ -76,4 +89,8 @@ function limitVisibleMessages() {
 		startMessageExit(oldestMessage.id);
 		break;
 	}
+}
+
+function increaseMessagesVersion() {
+	gameState.messages.version += 1;
 }

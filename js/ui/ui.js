@@ -1,7 +1,11 @@
 import { gameState } from "../core/state.js";
 import { getResource } from "../systems/resources.js";
 import { isSystemUnlocked } from "../systems/unlocks.js";
-import { getMessageFeed, hasMessages } from "../systems/messages.js";
+import {
+  getMessageFeed,
+  getMessagesVersion,
+  hasMessages,
+} from "../systems/messages.js";
 import { UI_ELEMENTS } from "./uiElements.js";
 
 export function updateUI() {
@@ -17,6 +21,7 @@ function updatePointsCounter() {
 }
 
 let lastMessageFeedSignature = "";
+let lastRenderedMessagesVersion = -1;
 
 function updateMessageFeed() {
   const messagesUnlocked = isSystemUnlocked("messages");
@@ -25,29 +30,25 @@ function updateMessageFeed() {
   UI_ELEMENTS.messageFeedArea.hidden = !messagesUnlocked || !hasVisibleMessages;
 
   if (!messagesUnlocked || !hasVisibleMessages) {
-    if (lastMessageFeedSignature !== "") {
+    if (lastRenderedMessagesVersion !== getMessagesVersion()) {
       UI_ELEMENTS.messageFeedList.innerHTML = "";
-      lastMessageFeedSignature = "";
+      lastRenderedMessagesVersion = getMessagesVersion();
     }
 
     return;
   }
 
-  const messageFeed = getMessageFeed();
+  const currentMessagesVersion = getMessagesVersion();
 
-  const currentSignature = messageFeed
-    .map((message) => `${message.id}:${message.isLeaving}`)
-    .join("|");
-
-  if (currentSignature === lastMessageFeedSignature) {
+  if (currentMessagesVersion === lastRenderedMessagesVersion) {
     return;
   }
 
-  lastMessageFeedSignature = currentSignature;
+  lastRenderedMessagesVersion = currentMessagesVersion;
 
   UI_ELEMENTS.messageFeedList.innerHTML = "";
 
-  messageFeed.forEach((message) => {
+  getMessageFeed().forEach((message) => {
     const item = document.createElement("li");
 
     item.classList.add("message-feed-item");
