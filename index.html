@@ -10,20 +10,6 @@
 	</head>
 	<body>
 		<main class="game-screen">
-			<section id="observationArea" class="observation-area" hidden>
-				<h2>Observação</h2>
-
-				<p>Cliques: <span id="totalClicksDisplay">0</span></p>
-				<p>
-					Total de pontos ganhos:
-					<span id="totalPointsEarnedDisplay">0</span>
-				</p>
-				<p>
-					Marcos desbloqueados:
-					<span id="unlockedMilestonesDisplay">0</span>
-				</p>
-			</section>
-
 			<section class="counter-area">
 				<div class="points-display">
 					Pontos: <span id="pointsCounter">0</span>
@@ -32,6 +18,22 @@
 
 			<section class="action-area">
 				<button id="mainButton" class="main-button">gerar ponto</button>
+			</section>
+
+			<section id="observationArea" class="observation-area" hidden>
+				<h2>Observação</h2>
+
+				<div class="stat-list">
+					<p>Cliques totais: <span id="totalClicksDisplay">0</span></p>
+					<p>
+						Pontos totais ganhos:
+						<span id="totalPointsEarnedDisplay">0</span>
+					</p>
+					<p>
+						Marcos desbloqueados:
+						<span id="unlockedMilestonesDisplay">0</span>
+					</p>
+				</div>
 			</section>
 
 			<section id="messageArea" class="message-area" hidden>

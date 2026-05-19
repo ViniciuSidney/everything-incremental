@@ -130,12 +130,57 @@ body {
 }
 
 /* ============================= */
+/* Observação */
+/* ============================= */
+
+.observation-area {
+  position: fixed;
+  top: 32px;
+  left: 32px;
+
+  width: min(260px, calc(100% - 64px));
+  padding: 12px 14px;
+
+  border: 1px solid #999999;
+  border-radius: 4px;
+
+  background: #f8f8f8;
+  color: #222222;
+
+  font-size: 0.9rem;
+}
+
+.observation-area h2 {
+  margin-bottom: 8px;
+
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.stat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.stat-list p {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.stat-list span {
+  font-weight: 600;
+}
+
+/* ============================= */
 /* Estados visuais */
 /* ============================= */
 
 body[data-visual-level="0"] .points-display,
 body[data-visual-level="0"] .main-button,
-body[data-visual-level="0"] .message-area {
+body[data-visual-level="0"] .message-area,
+body[data-visual-level="0"] .observation-area {
   border-radius: 4px;
 }
 
@@ -143,4 +188,8 @@ body[data-visual-level="1"] .points-display,
 body[data-visual-level="1"] .main-button,
 body[data-visual-level="1"] .message-area {
   border-radius: 999px;
+}
+
+body[data-visual-level="1"] .observation-area {
+  border-radius: 12px;
 }
