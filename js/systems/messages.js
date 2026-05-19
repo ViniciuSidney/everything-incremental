@@ -2,7 +2,7 @@ import { gameState } from '../core/state.js';
 import { unlockSystem } from './unlocks.js';
 
 export function unlockMessages() {
-	unlockSystem('messagesUnlocked');
+	unlockSystem('messages');
 }
 
 export function setMessage(message) {

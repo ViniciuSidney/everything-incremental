@@ -4,17 +4,17 @@ import { showMessage } from './messages.js';
 import { unlockSystem } from './unlocks.js';
 
 export function unlockFirstMessage() {
-	showMessage(GAME_CONFIG.messages.firstMessage);
+	showMessage(GAME_CONFIG.messages.Message01);
 }
 
 export function unlockFirstVisualChange() {
 	setVisualLevel(1);
 
-	showMessage(GAME_CONFIG.messages.firstVisualChange);
+	showMessage(GAME_CONFIG.messages.Visual01);
 }
 
 export function unlockObservationSystem() {
 	unlockSystem('observation');
 
-	showMessage('O jogo começou a observar o que você faz.');
+	showMessage(GAME_CONFIG.messages.Observation01);
 }

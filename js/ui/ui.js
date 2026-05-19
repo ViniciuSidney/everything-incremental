@@ -16,14 +16,14 @@ function updatePointsCounter() {
 }
 
 function updateMessageArea() {
-	const messagesUnlocked = isSystemUnlocked('messagesUnlocked');
+	const messagesUnlocked = isSystemUnlocked('messages');
 
 	UI_ELEMENTS.messageArea.hidden = !messagesUnlocked || !hasMessage();
 	UI_ELEMENTS.gameMessage.textContent = getCurrentMessage();
 }
 
 function updateObservationArea() {
-	const observationUnlocked = isSystemUnlocked('observationUnlocked');
+	const observationUnlocked = isSystemUnlocked('observation');
 
 	UI_ELEMENTS.observationArea.hidden = !observationUnlocked;
 

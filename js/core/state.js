@@ -11,9 +11,9 @@ export const gameState = {
 	},
 
 	systems: {
-		messagesUnlocked: false,
-		visualEvolutionUnlocked: false,
-		observationUnlocked: false,
+		messages: false,
+		visualEvolution: false,
+		observation: false,
 	},
 
 	progression: {

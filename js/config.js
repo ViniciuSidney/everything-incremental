@@ -10,9 +10,18 @@ export const GAME_CONFIG = {
 	},
 
 	milestones: {
-		firstMessagePoints: 10,
-		firstVisualClicks: 25,
-		observationClicks: 50,
+		Message01: {
+			value: 10,
+			currency: "points",
+		},
+		Visual01: {
+			value: 25,
+			currency: "points",
+		},
+		Observation01: {
+			value: 50,
+			currency: "points",
+		},
 	},
 
 	visual: {
@@ -24,7 +33,8 @@ export const GAME_CONFIG = {
 	},
 
 	messages: {
-		firstMessage: 'Algo mudou. Ainda é pouco, mas já é alguma coisa.',
-		firstVisualChange: 'A interface parece um pouco menos crua agora.',
+		Message01: 'Tem alguém aí?',
+		Visual01: 'Isso está mexendo comigo...',
+		Observation01: 'Eu consigo sentir.',
 	},
 };
