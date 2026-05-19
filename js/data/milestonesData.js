@@ -1,5 +1,24 @@
 export const milestones = [
   {
+    id: "3-points",
+    name: "Percepção",
+    description: "Há algo aqui...",
+
+    requirement: {
+      metric: "totalPointsEarned",
+      operator: ">=",
+      value: 3,
+    },
+
+    effects: [
+      {
+        type: "showMessage",
+        text: "...",
+      },
+    ],
+  },
+
+  {
     id: "first-10-points",
     name: "Primeiros sinais",
     description: "Um sinal surge no vazio.",
@@ -91,7 +110,7 @@ export const milestones = [
     requirement: {
       metric: "milestones",
       operator: ">=",
-      value: 4,
+      value: 5,
     },
 
     effects: [
