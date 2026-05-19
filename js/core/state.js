@@ -34,4 +34,12 @@ export const gameState = {
   records: {
     milestoneHistory: [],
   },
+
+  rhythm: {
+    lastClickTime: null,
+    lastClickInterval: 0,
+    shortestClickInterval: null,
+    longestClickInterval: 0,
+    timeSinceLastClick: 0,
+  },
 };

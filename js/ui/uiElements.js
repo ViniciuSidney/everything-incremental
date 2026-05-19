@@ -25,4 +25,10 @@ export const UI_ELEMENTS = {
 
   recordsArea: getElement("#recordsArea"),
   recordsList: getElement("#recordsList"),
+
+  rhythmArea: getElement("#rhythmArea"),
+  lastClickIntervalDisplay: getElement("#lastClickIntervalDisplay"),
+  shortestClickIntervalDisplay: getElement("#shortestClickIntervalDisplay"),
+  longestClickIntervalDisplay: getElement("#longestClickIntervalDisplay"),
+  timeSinceLastClickDisplay: getElement("#timeSinceLastClickDisplay"),
 };

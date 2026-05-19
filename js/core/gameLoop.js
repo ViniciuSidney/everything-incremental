@@ -1,5 +1,6 @@
 import { checkMilestones } from '../systems/milestones.js';
 import { updateUI } from '../ui/ui.js';
+import { updateRhythm } from '../systems/rhythm.js';
 
 let lastUpdateTime = Date.now();
 
@@ -28,5 +29,5 @@ function updateGame(deltaTime) {
 }
 
 function updatePassiveSystems(deltaTime) {
-	// Sistemas passivos futuros entram aqui.
+	updateRhythm(deltaTime);
 }

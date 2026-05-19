@@ -211,7 +211,7 @@ export const milestones = [
   },
 
   {
-    id: "first-3-ideas",
+    id: "first-4-ideas",
     name: "Pensamento Inicial",
     description: "As ideias começam a se organizar.",
 

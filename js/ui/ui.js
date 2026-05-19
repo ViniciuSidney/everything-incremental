@@ -6,6 +6,8 @@ import {
   getMessagesVersion,
   hasMessages,
 } from "../systems/messages.js";
+import { formatRhythmTime } from "../systems/rhythm.js";
+
 import { UI_ELEMENTS } from "./uiElements.js";
 
 export function updateUI() {
@@ -14,6 +16,7 @@ export function updateUI() {
   updateObservationArea();
   updateIdeasArea();
   updateRecordsArea();
+  updateRhythmArea();
 }
 
 function updatePointsCounter() {
@@ -112,4 +115,30 @@ function updateRecordsArea() {
 
     UI_ELEMENTS.recordsList.appendChild(item);
   });
+}
+
+function updateRhythmArea() {
+  const rhythmUnlocked = isSystemUnlocked("rhythm");
+
+  UI_ELEMENTS.rhythmArea.hidden = !rhythmUnlocked;
+
+  if (!rhythmUnlocked) {
+    return;
+  }
+
+  UI_ELEMENTS.lastClickIntervalDisplay.textContent = formatRhythmTime(
+    gameState.rhythm.lastClickInterval,
+  );
+
+  UI_ELEMENTS.shortestClickIntervalDisplay.textContent = formatRhythmTime(
+    gameState.rhythm.shortestClickInterval,
+  );
+
+  UI_ELEMENTS.longestClickIntervalDisplay.textContent = formatRhythmTime(
+    gameState.rhythm.longestClickInterval,
+  );
+
+  UI_ELEMENTS.timeSinceLastClickDisplay.textContent = formatRhythmTime(
+    gameState.rhythm.timeSinceLastClick,
+  );
 }
