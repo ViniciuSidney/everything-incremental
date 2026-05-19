@@ -1,11 +1,11 @@
 export const milestones = [
   {
-    id: "3-points",
+    id: "3-clicks",
     name: "Percepção",
     description: "Há algo aqui...",
 
     requirement: {
-      metric: "totalPointsEarned",
+      metric: "totalClicks",
       operator: ">=",
       value: 3,
     },
@@ -19,12 +19,12 @@ export const milestones = [
   },
 
   {
-    id: "first-10-points",
+    id: "first-10-clicks",
     name: "Primeiros sinais",
     description: "Um sinal surge no vazio.",
 
     requirement: {
-      metric: "totalPointsEarned",
+      metric: "totalClicks",
       operator: ">=",
       value: 10,
     },
@@ -38,12 +38,12 @@ export const milestones = [
   },
 
   {
-    id: "first-25-points",
+    id: "first-25-clicks",
     name: "Forma inicial",
     description: "Ocasionando reações no ambiente.",
 
     requirement: {
-      metric: "totalPointsEarned",
+      metric: "totalClicks",
       operator: ">=",
       value: 25,
     },
@@ -66,7 +66,7 @@ export const milestones = [
     description: "Algo começa a perceber padrões.",
 
     requirement: {
-      metric: "totalPointsEarned",
+      metric: "totalClicks",
       operator: ">=",
       value: 50,
     },
@@ -84,12 +84,12 @@ export const milestones = [
   },
 
   {
-    id: "first-100-points",
+    id: "first-100-clicks",
     name: "Acumulando",
     description: "Para que acumular?",
 
     requirement: {
-      metric: "totalPointsEarned",
+      metric: "totalClicks",
       operator: ">=",
       value: 100,
     },
@@ -132,7 +132,7 @@ export const milestones = [
     description: "É melhor deixar registrado.",
 
     requirement: {
-      metric: "totalPointsEarned",
+      metric: "totalClicks",
       operator: ">=",
       value: 200,
     },
@@ -145,6 +145,86 @@ export const milestones = [
       {
         type: "showMessage",
         text: "É melhor registrar isso.",
+      },
+    ],
+  },
+
+  {
+    id: "first-250-clicks",
+    name: "Insistência",
+    description: "A repetição começa a formar um padrão.",
+
+    requirement: {
+      metric: "totalClicks",
+      operator: ">=",
+      value: 250,
+    },
+
+    effects: [
+      {
+        type: "showMessage",
+        text: "É interessante como você continua fazendo isso.",
+      },
+    ],
+  },
+
+  {
+    id: "first-400-clicks",
+    name: "Ritmo",
+    description: "Há um padrão na repetição.",
+
+    requirement: {
+      metric: "totalClicks",
+      operator: ">=",
+      value: 400,
+    },
+
+    effects: [
+      {
+        type: "unlockSystem",
+        system: "rhythm",
+      },
+      {
+        type: "showMessage",
+        text: "Existe um ritmo nisso.",
+      },
+    ],
+  },
+
+  {
+    id: "first-500-clicks",
+    name: "Persistência",
+    description: "O acúmulo já não parece acidental.",
+
+    requirement: {
+      metric: "totalClicks",
+      operator: ">=",
+      value: 500,
+    },
+
+    effects: [
+      {
+        type: "showMessage",
+        text: "Será proposital?",
+      },
+    ],
+  },
+
+  {
+    id: "first-3-ideas",
+    name: "Pensamento Inicial",
+    description: "As ideias começam a se organizar.",
+
+    requirement: {
+      metric: "ideas",
+      operator: ">=",
+      value: 4,
+    },
+
+    effects: [
+      {
+        type: "showMessage",
+        text: "Há uma conexão de ideias aqui.",
       },
     ],
   },

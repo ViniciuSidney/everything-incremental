@@ -17,6 +17,7 @@ export const gameState = {
     observation: false,
     ideas: false,
     records: false,
+    rhythm: false,
   },
 
   progression: {
