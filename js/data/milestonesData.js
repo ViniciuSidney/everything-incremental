@@ -1,11 +1,3 @@
-import {
-	unlockFirstMessage,
-	unlockFirstVisualChange,
-	unlockObservationSystem,
-	unlockIdeasSystem,
-	unlockGreaterAccumulation,
-} from '../systems/milestoneEffects.js';
-
 export const milestones = [
 	{
 		id: 'first-10-points',
@@ -18,8 +10,12 @@ export const milestones = [
 			value: 10,
 		},
 
-		message: 'Tem alguém aí?',
-		effect: unlockFirstMessage,
+		effects: [
+			{
+				type: 'showMessage',
+				text: 'Tem alguém aí?',
+			},
+		],
 	},
 
 	{
@@ -33,8 +29,16 @@ export const milestones = [
 			value: 25,
 		},
 
-		message: 'Isso está mexendo comigo...',
-		effect: unlockFirstVisualChange,
+		effects: [
+			{
+				type: 'setVisualLevel',
+				level: 1,
+			},
+			{
+				type: 'showMessage',
+				text: 'Isso está mexendo comigo...',
+			},
+		],
 	},
 
 	{
@@ -48,8 +52,16 @@ export const milestones = [
 			value: 50,
 		},
 
-		message: 'Eu consigo sentir.',
-		effect: unlockObservationSystem,
+		effects: [
+			{
+				type: 'unlockSystem',
+				system: 'observation',
+			},
+			{
+				type: 'showMessage',
+				text: 'Eu consigo sentir.',
+			},
+		],
 	},
 
 	{
@@ -63,8 +75,12 @@ export const milestones = [
 			value: 100,
 		},
 
-		message: 'Por que tantos pontos?',
-		effect: unlockGreaterAccumulation,
+		effects: [
+			{
+				type: 'showMessage',
+				text: 'Por que tantos pontos?',
+			},
+		],
 	},
 
 	{
@@ -78,7 +94,19 @@ export const milestones = [
 			value: 4,
 		},
 
-		message: 'Acho que isso está me dando algumas ideias...',
-		effect: unlockIdeasSystem,
+		effects: [
+			{
+				type: 'unlockSystem',
+				system: 'ideas',
+			},
+			{
+				type: 'unlockSystem',
+				system: 'discoveries',
+			},
+			{
+				type: 'showMessage',
+				text: 'Acho que isso está me dando algumas ideias...',
+			},
+		],
 	},
 ];

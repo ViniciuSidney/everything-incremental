@@ -1,9 +1,11 @@
-import { gameState } from '../core/state.js';
 import { GAME_CONFIG } from '../config.js';
+import { gameState } from '../core/state.js';
 import { milestones } from '../data/milestonesData.js';
+
 import { addIdea } from './resources.js';
 import { isSystemUnlocked } from './unlocks.js';
 import { checkMilestoneRequirement } from './milestoneMetrics.js';
+import { runMilestoneEffects } from './milestoneEffectRunner.js';
 
 export function checkMilestones() {
 	milestones.forEach((milestone) => {
@@ -40,11 +42,7 @@ function unlockMilestone(milestone) {
 	gameState.progression.unlockedMilestones.push(milestone.id);
 
 	registerDiscovery(milestone);
-
-	if (typeof milestone.effect === 'function') {
-		milestone.effect(gameState, milestone);
-	}
-
+	runMilestoneEffects(gameState, milestone);
 	rewardIdeaForMilestone(milestone);
 
 	console.log(`Marco desbloqueado: ${milestone.name}`);

@@ -1,38 +1,56 @@
-import { setVisualLevel } from './visual.js';
 import { showMessage } from './messages.js';
-import { unlockSystem } from './unlocks.js';
 
-export function unlockFirstMessage(state, milestone) {
-	showMilestoneMessage(milestone);
+export function showStrangeDebugMessage() {
+	showMessage('Algo estranho aconteceu.');
 }
 
-export function unlockFirstVisualChange(state, milestone) {
-	setVisualLevel(1);
+// Efeitos personalizados de marcos ficam aqui.
+// Use este arquivo apenas quando os efeitos declarativos não forem suficientes.
 
-	showMilestoneMessage(milestone);
-}
+/*
+Em milestoneEffects.js
 
-export function unlockObservationSystem(state, milestone) {
-	unlockSystem('observation');
+import { showMessage } from './messages.js';
+import { addResource } from './resources.js';
 
-	showMilestoneMessage(milestone);
-}
+export function unlockStrangeReaction(state, milestone) {
+	const points = state.resources.points;
 
-export function unlockIdeasSystem(state, milestone) {
-	unlockSystem('ideas');
-	unlockSystem('discoveries');
-
-	showMilestoneMessage(milestone);
-}
-
-export function unlockGreaterAccumulation(state, milestone) {
-	showMilestoneMessage(milestone);
-}
-
-function showMilestoneMessage(milestone) {
-	if (!milestone.message) {
+	if (points % 2 === 0) {
+		addResource('ideias', 2);
+		showMessage('O número par respondeu.');
 		return;
 	}
 
-	showMessage(milestone.message);
+	showMessage('O número ímpar resistiu.');
 }
+*/
+
+/*
+Em milestonesData.js
+
+import { unlockStrangeReaction } from '../systems/milestoneEffects.js';
+
+export const milestones = [
+	{
+		id: 'strange-reaction',
+		name: 'Reação Estranha',
+		description: 'Algo reage ao valor atual dos pontos.',
+
+		requirement: {
+			metric: 'points',
+			operator: '>=',
+			value: 200,
+		},
+
+		effects: [
+			{
+				type: 'showMessage',
+				text: 'Algo parece instável.',
+			},
+		],
+
+		effect: unlockStrangeReaction,
+	},
+];
+*/
