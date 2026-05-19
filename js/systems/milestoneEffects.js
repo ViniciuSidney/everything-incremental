@@ -18,3 +18,14 @@ export function unlockObservationSystem() {
 
 	showMessage(GAME_CONFIG.messages.Observation01);
 }
+
+export function unlockIdeasSystem() {
+	unlockSystem('ideas');
+	unlockSystem('discoveries');
+
+	showMessage(GAME_CONFIG.messages.Ideas01);
+}
+
+export function unlockGreaterAccumulation() {
+	showMessage(GAME_CONFIG.messages.GreaterAccumulation01);
+}

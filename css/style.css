@@ -174,22 +174,112 @@ body {
 }
 
 /* ============================= */
+/* Ideias */
+/* ============================= */
+
+.ideas-area {
+  position: fixed;
+  top: 32px;
+  right: 32px;
+
+  max-width: min(220px, calc(100% - 64px));
+}
+
+.ideas-display {
+  padding: 10px 18px;
+
+  border: 1px solid #999999;
+  border-radius: 4px;
+
+  background: #f8f8f8;
+  color: #222222;
+
+  font-size: 1rem;
+}
+
+/* ============================= */
+/* Descobertas */
+/* ============================= */
+
+.discoveries-area {
+  position: fixed;
+  right: 32px;
+  bottom: 88px;
+
+  width: min(300px, calc(100% - 64px));
+  max-height: 260px;
+  overflow-y: auto;
+
+  padding: 12px 14px;
+
+  border: 1px solid #999999;
+  border-radius: 4px;
+
+  background: #f8f8f8;
+  color: #222222;
+
+  font-size: 0.9rem;
+}
+
+.discoveries-area h2 {
+  margin-bottom: 8px;
+
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.discoveries-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  list-style: none;
+}
+
+.discoveries-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  padding-bottom: 8px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.discoveries-list li:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.discoveries-list strong {
+  font-size: 0.9rem;
+}
+
+.discoveries-list span {
+  color: #555555;
+  font-size: 0.82rem;
+}
+
+/* ============================= */
 /* Estados visuais */
 /* ============================= */
 
 body[data-visual-level="0"] .points-display,
 body[data-visual-level="0"] .main-button,
 body[data-visual-level="0"] .message-area,
-body[data-visual-level="0"] .observation-area {
+body[data-visual-level="0"] .observation-area,
+body[data-visual-level="0"] .ideas-display,
+body[data-visual-level="0"] .discoveries-area {
   border-radius: 4px;
 }
 
 body[data-visual-level="1"] .points-display,
 body[data-visual-level="1"] .main-button,
-body[data-visual-level="1"] .message-area {
+body[data-visual-level="1"] .message-area,
+body[data-visual-level="1"] .ideas-display {
   border-radius: 999px;
 }
 
-body[data-visual-level="1"] .observation-area {
+body[data-visual-level="1"] .observation-area,
+body[data-visual-level="1"] .discoveries-area {
   border-radius: 12px;
 }

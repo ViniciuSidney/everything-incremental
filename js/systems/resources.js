@@ -29,3 +29,7 @@ export function addPoint(amount = GAME_CONFIG.resources.pointsPerClick) {
 
 	gameState.stats.totalPointsEarned += amount;
 }
+
+export function addIdea(amount = GAME_CONFIG.resources.ideasPerMilestone) {
+	addResource('ideas', amount);
+}

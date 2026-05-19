@@ -3,6 +3,7 @@ import { GAME_CONFIG } from '../config.js';
 export const gameState = {
 	resources: {
 		points: GAME_CONFIG.resources.initialPoints,
+		ideias: GAME_CONFIG.resources.initialIdeas,
 	},
 
 	stats: {
@@ -14,6 +15,8 @@ export const gameState = {
 		messages: false,
 		visualEvolution: false,
 		observation: false,
+		ideas: false,
+		discoveries: false,
 	},
 
 	progression: {
@@ -23,5 +26,9 @@ export const gameState = {
 
 	messages: {
 		currentMessage: '',
+	},
+
+	discoveries: {
+		MilestoneHistory: [],
 	},
 };

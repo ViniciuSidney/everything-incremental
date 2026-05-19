@@ -37,3 +37,38 @@ function updateObservationArea() {
 	UI_ELEMENTS.unlockedMilestonesDisplay.textContent =
 		gameState.progression.unlockedMilestones.length;
 }
+
+function updateIdeasArea() {
+	const ideasUnlocked = isSystemUnlocked('ideas');
+
+	UI_ELEMENTS.ideasArea.hidden = !ideasUnlocked;
+
+	if (!ideasUnlocked) {
+		return;
+	}
+
+	UI_ELEMENTS.ideasCounter.textContent = getResource('ideas');
+}
+
+function updateDiscoveriesArea() {
+	const discoveriesUnlocked = isSystemUnlocked('discoveries');
+
+	UI_ELEMENTS.discoveriesArea.hidden = !discoveriesUnlocked;
+
+	if (!discoveriesUnlocked) {
+		return;
+	}
+
+	UI_ELEMENTS.discoveriesList.innerHTML = '';
+
+	gameState.discoveries.unlockedMilestoneHistory.forEach((discovery) => {
+		const item = document.createElement('li');
+
+		item.innerHTML = `
+      <strong>${discovery.name}</strong>
+      <span>${discovery.description}</span>
+    `;
+
+		UI_ELEMENTS.discoveriesList.appendChild(item);
+	});
+}

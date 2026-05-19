@@ -18,5 +18,11 @@ export const UI_ELEMENTS = {
 	observationArea: getElement('#observationArea'),
 	totalClicksDisplay: getElement('#totalClicksDisplay'),
 	totalPointsEarnedDisplay: getElement('#totalPointsEarnedDisplay'),
-	unlockedMilestonesDisplay: getElement('#unlockedMilestonesDisplay')
+	unlockedMilestonesDisplay: getElement('#unlockedMilestonesDisplay'),
+
+	ideasArea: getElement('#ideasArea'),
+	ideasCounter: getElement('#ideasCounter'),
+
+	discoveriesArea: getElement('#discoveriesArea'),
+	discoveriesList: getElement('#discoveriesList')
 };
