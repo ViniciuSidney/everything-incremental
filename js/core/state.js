@@ -16,7 +16,7 @@ export const gameState = {
     visualEvolution: false,
     observation: false,
     ideas: false,
-    discoveries: false,
+    records: false,
   },
 
   progression: {
@@ -29,7 +29,7 @@ export const gameState = {
     history: [],
   },
 
-  discoveries: {
-    MilestoneHistory: [],
+  records: {
+    milestoneHistory: [],
   },
 };

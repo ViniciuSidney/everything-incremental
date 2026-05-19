@@ -245,10 +245,10 @@ body {
 }
 
 /* ============================= */
-/* Descobertas */
+/* Registros */
 /* ============================= */
 
-.discoveries-area {
+.records-area {
   position: fixed;
   right: 32px;
   top: 92px;
@@ -268,14 +268,14 @@ body {
   font-size: 0.9rem;
 }
 
-.discoveries-area h2 {
+.records-area h2 {
   margin-bottom: 8px;
 
   font-size: 1rem;
   font-weight: 600;
 }
 
-.discoveries-list {
+.records-list {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -283,7 +283,7 @@ body {
   list-style: none;
 }
 
-.discoveries-list li {
+.records-list li {
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -292,16 +292,16 @@ body {
   border-bottom: 1px solid #dddddd;
 }
 
-.discoveries-list li:last-child {
+.records-list li:last-child {
   padding-bottom: 0;
   border-bottom: none;
 }
 
-.discoveries-list strong {
+.records-list strong {
   font-size: 0.9rem;
 }
 
-.discoveries-list span {
+.records-list span {
   color: #555555;
   font-size: 0.82rem;
 }
@@ -314,7 +314,7 @@ body[data-visual-level="0"] .points-display,
 body[data-visual-level="0"] .main-button,
 body[data-visual-level="0"] .observation-area,
 body[data-visual-level="0"] .ideas-display,
-body[data-visual-level="0"] .discoveries-area,
+body[data-visual-level="0"] .records-area,
 body[data-visual-level="0"] .message-feed-item {
   border-radius: 4px;
 }
@@ -326,7 +326,7 @@ body[data-visual-level="1"] .ideas-display {
 }
 
 body[data-visual-level="1"] .observation-area,
-body[data-visual-level="1"] .discoveries-area,
+body[data-visual-level="1"] .records-area,
 body[data-visual-level="1"] .message-feed-item {
   border-radius: 12px;
 }
@@ -338,7 +338,7 @@ body[data-visual-level="1"] .message-feed-item {
 @media (max-width: 768px) {
   .observation-area,
   .ideas-area,
-  .discoveries-area,
+  .records-area,
   .message-feed-area {
     position: static;
     width: calc(100% - 32px);

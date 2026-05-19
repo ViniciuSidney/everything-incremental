@@ -35,7 +35,7 @@ A ideia principal é que cada milestone seja criada em um único lugar: `js/data
 | ------------- | ---------------------------------------------------- |
 | `id`          | Identificador único do marco                         |
 | `name`        | Nome exibido no jogo                                 |
-| `description` | Descrição usada no registro de descobertas           |
+| `description` | Descrição usada no registro de Marcos                |
 | `requirement` | Condição simples para desbloquear o marco            |
 | `condition`   | Condição personalizada, usada em casos especiais     |
 | `effects`     | Lista de efeitos executados ao desbloquear o marco   |
@@ -48,19 +48,19 @@ Use IDs curtos, em inglês, com letras minúsculas e hífens.
 ### Exemplos
 
 ```js
-'first-10-points'
-'first-100-clicks'
-'unlock-observation'
-'unlock-ideas'
-'lucky-seven'
+"first-10-points";
+"first-100-clicks";
+"unlock-observation";
+"unlock-ideas";
+"lucky-seven";
 ```
 
 Evite IDs vagos como:
 
 ```js
-'marco1'
-'teste'
-'novo'
+"marco1";
+"teste";
+"novo";
 ```
 
 ## Usando requirement
@@ -77,56 +77,57 @@ requirement: {
 
 Isso significa:
 
-> Desbloquear quando a métrica ```points``` for maior ou igual a ```100```.
+> Desbloquear quando a métrica `points` for maior ou igual a `100`.
 
 ## Métricas disponíveis
 
-As métricas ficam registradas em ```js/systems/milestoneMetrics.js```.
+As métricas ficam registradas em `js/systems/milestoneMetrics.js`.
 
 ### Métricas iniciais
 
 ```js
-points
-ideas
-totalClicks
-totalPointsEarned
-milestones
-visualLevel
+points;
+ideas;
+totalClicks;
+totalPointsEarned;
+milestones;
+visualLevel;
 ```
 
 ### Exemplos de uso
 
 ```js
-metric: 'points'
+metric: "points";
 ```
+
 Usado para observar os Pontos atuais.
 
 ```js
-metric: 'ideas'
+metric: "ideas";
 ```
 
 Usado para observar a quantidade atual de Ideias.
 
 ```js
-metric: 'totalClicks'
+metric: "totalClicks";
 ```
 
 Usado para observar o total de cliques.
 
 ```js
-metric: 'totalPointsEarned'
+metric: "totalPointsEarned";
 ```
 
 Usado para observar o total de Pontos ganhos durante a partida.
 
 ```js
-metric: 'milestones'
+metric: "milestones";
 ```
 
 Usado para observar quantos marcos já foram desbloqueados.
 
 ```js
-metric: 'visualLevel'
+metric: "visualLevel";
 ```
 
 ## Operadores disponíveis
@@ -205,7 +206,7 @@ Use `effect` quando `effects` não for suficiente.
 Nesse caso, a função `unlockStrangeReaction` deve ser criada em:
 
 ```js
-js/systems/milestoneEffects.js
+js / systems / milestoneEffects.js;
 ```
 
 ## Checklist para criar uma nova milestone
@@ -232,7 +233,7 @@ Antes de adicionar um novo marco, responda:
 2. Se o marco já foi desbloqueado, ele é ignorado.
 3. Se a condição for atingida, o marco é desbloqueado.
 4. O marco entra em progression.unlockedMilestones.
-5. O marco entra em discoveries.MilestoneHistory.
+5. O marco entra em records.milestoneHistory.
 6. milestoneEffectRunner.js executa os efeitos.
 7. Se Ideas já estiver desbloqueado, o marco pode conceder Ideas.
 8. A UI atualiza as informações na tela.

@@ -9,7 +9,7 @@ export function updateUI() {
   updateMessageFeed();
   updateObservationArea();
   updateIdeasArea();
-  updateDiscoveriesArea();
+  updateRecordsArea();
 }
 
 function updatePointsCounter() {
@@ -90,25 +90,25 @@ function updateIdeasArea() {
   UI_ELEMENTS.ideasCounter.textContent = getResource("ideas");
 }
 
-function updateDiscoveriesArea() {
-  const discoveriesUnlocked = isSystemUnlocked("discoveries");
+function updateRecordsArea() {
+  const recordsUnlocked = isSystemUnlocked("records");
 
-  UI_ELEMENTS.discoveriesArea.hidden = !discoveriesUnlocked;
+  UI_ELEMENTS.recordsArea.hidden = !recordsUnlocked;
 
-  if (!discoveriesUnlocked) {
+  if (!recordsUnlocked) {
     return;
   }
 
-  UI_ELEMENTS.discoveriesList.innerHTML = "";
+  UI_ELEMENTS.recordsList.innerHTML = "";
 
-  gameState.discoveries.MilestoneHistory.forEach((discovery) => {
+  gameState.records.milestoneHistory.forEach((milestone) => {
     const item = document.createElement("li");
 
     item.innerHTML = `
-			<strong>${discovery.name}</strong>
-			<span>${discovery.description}</span>
+			<strong>${milestone.name}</strong>
+			<span>${milestone.description}</span>
 		`;
 
-    UI_ELEMENTS.discoveriesList.appendChild(item);
+    UI_ELEMENTS.recordsList.appendChild(item);
   });
 }

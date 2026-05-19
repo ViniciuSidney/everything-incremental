@@ -23,6 +23,6 @@ export const UI_ELEMENTS = {
   ideasArea: getElement("#ideasArea"),
   ideasCounter: getElement("#ideasCounter"),
 
-  discoveriesArea: getElement("#discoveriesArea"),
-  discoveriesList: getElement("#discoveriesList"),
+  recordsArea: getElement("#recordsArea"),
+  recordsList: getElement("#recordsList"),
 };
