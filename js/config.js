@@ -39,7 +39,9 @@ export const GAME_CONFIG = {
   },
 
   ui: {
-    messageDuration: 3500,
+    messageDuration: 5000,
+    messageExitDuration: 250,
+    maxVisibleMessages: 5,
   },
 
   loop: {

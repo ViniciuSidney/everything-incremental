@@ -1,54 +1,79 @@
-import { GAME_CONFIG } from "../config.js";
-import { gameState } from "../core/state.js";
-import { unlockSystem } from "./unlocks.js";
-
-let messageTimer = null;
+import { GAME_CONFIG } from '../config.js';
+import { gameState } from '../core/state.js';
+import { unlockSystem } from './unlocks.js';
 
 export function unlockMessages() {
-  unlockSystem("messages");
+	unlockSystem('messages');
 }
 
-export function showMessage(message) {
-  unlockMessages();
+export function showMessage(text) {
+	unlockMessages();
 
-  const messageData = {
-    text: message,
-    createdAt: Date.now(),
-  };
+	const message = createMessage(text);
 
-  gameState.messages.queue.push(messageData);
-  gameState.messages.history.push(messageData);
+	gameState.messages.feed.push(message);
+	gameState.messages.history.push(message);
 
-  processMessageQueue();
+	limitVisibleMessages();
+	scheduleMessageRemoval(message.id);
 }
 
-export function clearMessage() {
-  gameState.messages.currentMessage = "";
+export function getMessageFeed() {
+	return gameState.messages.feed;
 }
 
-export function hasMessage() {
-  return gameState.messages.currentMessage.trim() !== "";
+export function hasMessages() {
+	return gameState.messages.feed.length > 0;
 }
 
-export function getCurrentMessage() {
-  return gameState.messages.currentMessage;
+export function clearMessages() {
+	gameState.messages.feed = [];
 }
 
-function processMessageQueue() {
-  const hasCurrentMessage = gameState.messages.currentMessage !== "";
-  const hasQueuedMessages = gameState.messages.queue.length > 0;
+function createMessage(text) {
+	return {
+		id: `${Date.now()}-${Math.random()}`,
+		text,
+		createdAt: Date.now(),
+		isLeaving: false,
+	};
+}
 
-  if (hasCurrentMessage || !hasQueuedMessages) {
-    return;
-  }
+function scheduleMessageRemoval(messageId) {
+	setTimeout(() => {
+		startMessageExit(messageId);
+	}, GAME_CONFIG.ui.messageDuration);
+}
 
-  const nextMessage = gameState.messages.queue.shift();
+function startMessageExit(messageId) {
+	const message = gameState.messages.feed.find((item) => {
+		return item.id === messageId;
+	});
 
-  gameState.messages.currentMessage = nextMessage.text;
+	if (!message) {
+		return;
+	}
 
-  messageTimer = setTimeout(() => {
-    clearMessage();
-    messageTimer = null;
-    processMessageQueue();
-  }, GAME_CONFIG.ui.messageDuration);
+	message.isLeaving = true;
+
+	setTimeout(() => {
+		removeMessage(messageId);
+	}, GAME_CONFIG.ui.messageExitDuration);
+}
+
+function removeMessage(messageId) {
+	gameState.messages.feed = gameState.messages.feed.filter((message) => {
+		return message.id !== messageId;
+	});
+}
+
+function limitVisibleMessages() {
+	const maxVisibleMessages = GAME_CONFIG.ui.maxVisibleMessages;
+
+	while (gameState.messages.feed.length > maxVisibleMessages) {
+		const oldestMessage = gameState.messages.feed[0];
+
+		startMessageExit(oldestMessage.id);
+		break;
+	}
 }

@@ -1,58 +1,58 @@
 <!doctype html>
 <html lang="pt-BR">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-		<title>Everything Incremental</title>
+    <title>Everything Incremental</title>
 
-		<link rel="stylesheet" href="css/style.css" />
-	</head>
-	<body>
-		<main class="game-screen">
-			<section class="counter-area">
-				<div class="points-display">
-					Pontos: <span id="pointsCounter">0</span>
-				</div>
-			</section>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <main class="game-screen">
+      <section class="counter-area">
+        <div class="points-display">
+          Pontos: <span id="pointsCounter">0</span>
+        </div>
+      </section>
 
-			<section class="action-area">
-				<button id="mainButton" class="main-button">gerar ponto</button>
-			</section>
+      <section class="action-area">
+        <button id="mainButton" class="main-button">gerar ponto</button>
+      </section>
 
-			<section id="observationArea" class="observation-area" hidden>
-				<h2>Observação</h2>
+      <section id="observationArea" class="observation-area" hidden>
+        <h2>Observação</h2>
 
-				<div class="stat-list">
-					<p>Cliques totais: <span id="totalClicksDisplay">0</span></p>
-					<p>
-						Pontos totais ganhos:
-						<span id="totalPointsEarnedDisplay">0</span>
-					</p>
-					<p>
-						Marcos desbloqueados:
-						<span id="unlockedMilestonesDisplay">0</span>
-					</p>
-				</div>
-			</section>
+        <div class="stat-list">
+          <p>Cliques totais: <span id="totalClicksDisplay">0</span></p>
+          <p>
+            Pontos totais ganhos:
+            <span id="totalPointsEarnedDisplay">0</span>
+          </p>
+          <p>
+            Marcos desbloqueados:
+            <span id="unlockedMilestonesDisplay">0</span>
+          </p>
+        </div>
+      </section>
 
-			<section id="ideasArea" class="ideas-area" hidden>
-				<div class="ideas-display">
-					Ideias: <span id="ideasCounter">0</span>
-				</div>
-			</section>
+      <section id="ideasArea" class="ideas-area" hidden>
+        <div class="ideas-display">
+          Ideias: <span id="ideasCounter">0</span>
+        </div>
+      </section>
 
-			<section id="discoveriesArea" class="discoveries-area" hidden>
-				<h2>Descobertas</h2>
+      <section id="discoveriesArea" class="discoveries-area" hidden>
+        <h2>Descobertas</h2>
 
-				<ul id="discoveriesList" class="discoveries-list"></ul>
-			</section>
+        <ul id="discoveriesList" class="discoveries-list"></ul>
+      </section>
 
-			<section id="messageArea" class="message-area" hidden>
-				<p id="gameMessage"></p>
-			</section>
-		</main>
+      <section id="messageFeedArea" class="message-feed-area" hidden>
+        <ul id="messageFeedList" class="message-feed-list"></ul>
+      </section>
+    </main>
 
-		<script type="module" src="js/main.js"></script>
-	</body>
+    <script type="module" src="js/main.js"></script>
+  </body>
 </html>

@@ -25,8 +25,7 @@ export const gameState = {
   },
 
   messages: {
-    currentMessage: "",
-    queue: [],
+    feed: [],
     history: [],
   },
 

@@ -31,13 +31,12 @@ body {
   flex-direction: column;
   align-items: center;
 
-  background:
-    radial-gradient(
-      circle at center,
-      #ffffff 0%,
-      #ffffff 60%,
-      #eeeeee 100%
-    );
+  background: radial-gradient(
+    circle at center,
+    #ffffff 0%,
+    #ffffff 60%,
+    #eeeeee 100%
+  );
 }
 
 /* ============================= */
@@ -106,27 +105,75 @@ body {
 }
 
 /* ============================= */
-/* Mensagens desbloqueáveis */
+/* Feed de mensagens */
 /* ============================= */
 
-.message-area {
+.message-feed-area {
   position: fixed;
+  right: 32px;
   bottom: 32px;
-  left: 50%;
 
-  transform: translateX(-50%);
+  width: min(340px, calc(100% - 64px));
 
-  max-width: 90%;
-  padding: 10px 16px;
+  pointer-events: none;
+  z-index: 20;
+}
+
+.message-feed-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 8px;
+
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+}
+
+.message-feed-item {
+  padding: 10px 14px;
 
   border: 1px solid #999999;
   border-radius: 4px;
 
   background: #f8f8f8;
-  color: #333333;
+  color: #222222;
 
-  font-size: 0.95rem;
-  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.35;
+
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+
+  animation: messageEnter 0.22s ease-out both;
+}
+
+.message-feed-item.is-leaving {
+  animation: messageExit 0.25s ease-in both;
+}
+
+@keyframes messageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes messageExit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
 }
 
 /* ============================= */
@@ -204,10 +251,10 @@ body {
 .discoveries-area {
   position: fixed;
   right: 32px;
-  bottom: 88px;
+  top: 92px;
 
   width: min(300px, calc(100% - 64px));
-  max-height: 260px;
+  max-height: 320px;
   overflow-y: auto;
 
   padding: 12px 14px;
@@ -265,21 +312,47 @@ body {
 
 body[data-visual-level="0"] .points-display,
 body[data-visual-level="0"] .main-button,
-body[data-visual-level="0"] .message-area,
 body[data-visual-level="0"] .observation-area,
 body[data-visual-level="0"] .ideas-display,
-body[data-visual-level="0"] .discoveries-area {
+body[data-visual-level="0"] .discoveries-area,
+body[data-visual-level="0"] .message-feed-item {
   border-radius: 4px;
 }
 
 body[data-visual-level="1"] .points-display,
 body[data-visual-level="1"] .main-button,
-body[data-visual-level="1"] .message-area,
 body[data-visual-level="1"] .ideas-display {
   border-radius: 999px;
 }
 
 body[data-visual-level="1"] .observation-area,
-body[data-visual-level="1"] .discoveries-area {
+body[data-visual-level="1"] .discoveries-area,
+body[data-visual-level="1"] .message-feed-item {
   border-radius: 12px;
+}
+
+/* ============================= */
+/* Responsividade */
+/* ============================= */
+
+@media (max-width: 768px) {
+  .observation-area,
+  .ideas-area,
+  .discoveries-area,
+  .message-feed-area {
+    position: static;
+    width: calc(100% - 32px);
+    margin: 16px auto;
+  }
+
+  .game-screen {
+    min-height: 100vh;
+    padding-bottom: 24px;
+    overflow-y: auto;
+  }
+
+  .action-area {
+    min-height: 240px;
+    flex: initial;
+  }
 }
