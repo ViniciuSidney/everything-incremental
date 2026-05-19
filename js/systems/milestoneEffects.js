@@ -1,31 +1,38 @@
-import { GAME_CONFIG } from '../config.js';
 import { setVisualLevel } from './visual.js';
 import { showMessage } from './messages.js';
 import { unlockSystem } from './unlocks.js';
 
-export function unlockFirstMessage() {
-	showMessage(GAME_CONFIG.messages.Message01);
+export function unlockFirstMessage(state, milestone) {
+	showMilestoneMessage(milestone);
 }
 
-export function unlockFirstVisualChange() {
+export function unlockFirstVisualChange(state, milestone) {
 	setVisualLevel(1);
 
-	showMessage(GAME_CONFIG.messages.Visual01);
+	showMilestoneMessage(milestone);
 }
 
-export function unlockObservationSystem() {
+export function unlockObservationSystem(state, milestone) {
 	unlockSystem('observation');
 
-	showMessage(GAME_CONFIG.messages.Observation01);
+	showMilestoneMessage(milestone);
 }
 
-export function unlockIdeasSystem() {
+export function unlockIdeasSystem(state, milestone) {
 	unlockSystem('ideas');
 	unlockSystem('discoveries');
 
-	showMessage(GAME_CONFIG.messages.Ideas01);
+	showMilestoneMessage(milestone);
 }
 
-export function unlockGreaterAccumulation() {
-	showMessage(GAME_CONFIG.messages.GreaterAccumulation01);
+export function unlockGreaterAccumulation(state, milestone) {
+	showMilestoneMessage(milestone);
+}
+
+function showMilestoneMessage(milestone) {
+	if (!milestone.message) {
+		return;
+	}
+
+	showMessage(milestone.message);
 }

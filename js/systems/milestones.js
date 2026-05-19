@@ -3,6 +3,7 @@ import { GAME_CONFIG } from '../config.js';
 import { milestones } from '../data/milestonesData.js';
 import { addIdea } from './resources.js';
 import { isSystemUnlocked } from './unlocks.js';
+import { checkMilestoneRequirement } from './milestoneMetrics.js';
 
 export function checkMilestones() {
 	milestones.forEach((milestone) => {
@@ -12,7 +13,7 @@ export function checkMilestones() {
 			return;
 		}
 
-		const conditionReached = milestone.condition(gameState);
+		const conditionReached = checkMilestoneCondition(milestone);
 
 		if (!conditionReached) {
 			return;
@@ -22,12 +23,27 @@ export function checkMilestones() {
 	});
 }
 
+function checkMilestoneCondition(milestone) {
+	if (typeof milestone.condition === 'function') {
+		return milestone.condition(gameState);
+	}
+
+	if (milestone.requirement) {
+		return checkMilestoneRequirement(gameState, milestone.requirement);
+	}
+
+	console.warn(`Marco sem condição válida: ${milestone.id}`);
+	return false;
+}
+
 function unlockMilestone(milestone) {
 	gameState.progression.unlockedMilestones.push(milestone.id);
 
 	registerDiscovery(milestone);
 
-	milestone.effect(gameState);
+	if (typeof milestone.effect === 'function') {
+		milestone.effect(gameState, milestone);
+	}
 
 	rewardIdeaForMilestone(milestone);
 
@@ -38,16 +54,16 @@ function registerDiscovery(milestone) {
 	gameState.discoveries.MilestoneHistory.push({
 		id: milestone.id,
 		name: milestone.name,
-		description: milestone.description
+		description: milestone.description,
 	});
 }
 
 function rewardIdeaForMilestone(milestone) {
-	if (!isSystemUnlocked('ideasUnlocked')) {
+	if (!isSystemUnlocked('ideas')) {
 		return;
 	}
 
-	if (milestone.id === 'unlock-ideas') {
+	if (milestone.id === 'ideas') {
 		return;
 	}
 
