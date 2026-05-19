@@ -42,8 +42,8 @@ export const milestones = [
   },
 
   {
-    id: "records",
-    name: "Registros",
+    id: "observation",
+    name: "Observação",
     description: "Algo começa a perceber padrões.",
 
     requirement: {
@@ -55,7 +55,7 @@ export const milestones = [
     effects: [
       {
         type: "unlockSystem",
-        system: "records",
+        system: "observation",
       },
       {
         type: "showMessage",
