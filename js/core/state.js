@@ -18,6 +18,7 @@ export const gameState = {
 		ideas: false,
 		records: false,
 		rhythm: false,
+		cadence: false,
 		silence: false
 	},
 
@@ -41,7 +42,10 @@ export const gameState = {
 		lastClickInterval: 0,
 		shortestClickInterval: null,
 		longestClickInterval: 0,
-		timeSinceLastClick: 0
+		timeSinceLastClick: 0,
+
+		fastClickStreak: 0,
+		calmClickStreak: 0
 	},
 
 	silence: {

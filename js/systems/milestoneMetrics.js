@@ -1,13 +1,16 @@
 export const milestoneMetrics = {
 	points: (state) => state.resources.points,
 	ideas: (state) => state.resources.ideas,
-	ideias: (state) => state.resources.ideias,
 
 	totalClicks: (state) => state.stats.totalClicks,
 	totalPointsEarned: (state) => state.stats.totalPointsEarned,
 
 	milestones: (state) => state.progression.unlockedMilestones.length,
 	visualLevel: (state) => state.progression.visualLevel,
+
+	fastClickStreak: (state) => state.rhythm.fastClickStreak,
+	calmClickStreak: (state) => state.rhythm.calmClickStreak,
+	timeSinceLastClick: (state) => state.rhythm.timeSinceLastClick
 };
 
 export function getMilestoneMetricValue(state, metric) {

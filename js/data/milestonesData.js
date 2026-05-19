@@ -84,33 +84,12 @@ export const milestones = [
 	},
 
 	{
-		id: 'first-100-clicks',
-		name: 'Acumulando',
-		description: 'Para que acumular?',
-
-		requirement: {
-			metric: 'totalClicks',
-			operator: '>=',
-			value: 100
-		},
-
-		effects: [
-			{
-				type: 'showMessage',
-				text: 'Por que tantos pontos?'
-			}
-		]
-	},
-
-	{
 		id: 'ideas',
 		name: 'Surgem Ideias',
 		description: 'Ideias surgem a partir das experiências.',
 
-		requirement: {
-			metric: 'milestones',
-			operator: '>=',
-			value: 5
+		condition: (state) => {
+			return state.stats.totalClicks >= 100 && state.progression.unlockedMilestones.length >= 4;
 		},
 
 		effects: [
@@ -121,7 +100,7 @@ export const milestones = [
 
 			{
 				type: 'showMessage',
-				text: 'Isso me faz pensar...'
+				text: 'Por que tantos pontos? Isso me faz pensar...'
 			}
 		]
 	},
@@ -163,20 +142,77 @@ export const milestones = [
 		effects: [
 			{
 				type: 'showMessage',
-				text: 'É interessante como você continua fazendo isso.'
+				text: 'É interessante como você continua nisso.'
+			}
+		]
+	},
+
+	{
+		id: 'first-300-clicks',
+		name: 'Persistência',
+		description: 'O acúmulo já não parece acidental.',
+
+		requirement: {
+			metric: 'totalClicks',
+			operator: '>=',
+			value: 300
+		},
+
+		effects: [
+			{
+				type: 'showMessage',
+				text: 'Será proposital?'
+			}
+		]
+	},
+
+	{
+		id: 'i-have-ideas',
+		name: 'Pensamento Inicial',
+		description: 'As ideias começam a se organizar.',
+
+		requirement: {
+			metric: 'totalClicks',
+			operator: '>=',
+			value: 350
+		},
+
+		effects: [
+			{
+				type: 'showMessage',
+				text: 'Há uma conexão de ideias aqui...'
 			}
 		]
 	},
 
 	{
 		id: 'first-400-clicks',
-		name: 'Ritmo',
-		description: 'Há um padrão na repetição.',
+		name: 'Padrão de cliques',
+		description: 'Percebendo padrões.',
 
 		requirement: {
 			metric: 'totalClicks',
 			operator: '>=',
 			value: 400
+		},
+
+		effects: [
+			{
+				type: 'showMessage',
+				text: 'Acho que percebi algo...'
+			}
+		]
+	},
+
+	{
+		id: 'rhythm-idea',
+		name: 'Ritmo',
+		description: 'Há um padrão na repetição.',
+
+		requirement: {
+			metric: 'ideas',
+			operator: '>=',
+			value: 5
 		},
 
 		effects: [
@@ -192,39 +228,39 @@ export const milestones = [
 	},
 
 	{
-		id: 'first-500-clicks',
-		name: 'Persistência',
-		description: 'O acúmulo já não parece acidental.',
+		id: 'rushed-clicks',
+		name: 'Pressa',
+		description: 'A rapidez começa a chamar atenção.',
 
-		requirement: {
-			metric: 'totalClicks',
-			operator: '>=',
-			value: 500
+		condition: (state) => {
+			return state.systems.rhythm && state.rhythm.fastClickStreak >= 150;
 		},
 
 		effects: [
 			{
 				type: 'showMessage',
-				text: 'Será proposital?'
+				text: 'Acalme-se, por favor, tenho que pensar!'
 			}
 		]
 	},
 
 	{
-		id: 'first-4-ideas',
-		name: 'Pensamento Inicial',
-		description: 'As ideias começam a se organizar.',
+		id: 'cadence',
+		name: 'Cadência',
+		description: 'Há espaço entre um sinal e outro.',
 
-		requirement: {
-			metric: 'ideas',
-			operator: '>=',
-			value: 4
+		condition: (state) => {
+			return state.systems.rhythm && state.rhythm.calmClickStreak >= 3;
 		},
 
 		effects: [
 			{
+				type: 'unlockSystem',
+				system: 'cadence'
+			},
+			{
 				type: 'showMessage',
-				text: 'Há uma conexão de ideias aqui.'
+				text: 'Preciso de um tempo para processar...'
 			}
 		]
 	},
@@ -245,7 +281,7 @@ export const milestones = [
 			},
 			{
 				type: 'showMessage',
-				text: 'Você pode até parar, mas o resto continua.'
+				text: 'Você para... mas há algo que continua...'
 			}
 		]
 	}

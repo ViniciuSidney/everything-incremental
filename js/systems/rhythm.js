@@ -11,6 +11,7 @@ export function registerRhythmClick() {
 
 		updateShortestClickInterval(intervalInSeconds);
 		updateLongestClickInterval(intervalInSeconds);
+		updateClickPace(intervalInSeconds);
 	}
 
 	gameState.rhythm.lastClickTime = currentTime;
@@ -36,6 +37,23 @@ function updateShortestClickInterval(intervalInSeconds) {
 function updateLongestClickInterval(intervalInSeconds) {
 	if (intervalInSeconds > gameState.rhythm.longestClickInterval) {
 		gameState.rhythm.longestClickInterval = intervalInSeconds;
+	}
+}
+
+function updateClickPace(intervalInSeconds) {
+	const isFastClick = intervalInSeconds < 1;
+	const isCalmClick = intervalInSeconds >= 2 && intervalInSeconds <= 4;
+
+	if (isFastClick) {
+		gameState.rhythm.fastClickStreak += 1;
+	} else {
+		gameState.rhythm.fastClickStreak = 0;
+	}
+
+	if (isCalmClick) {
+		gameState.rhythm.calmClickStreak += 1;
+	} else {
+		gameState.rhythm.calmClickStreak = 0;
 	}
 }
 

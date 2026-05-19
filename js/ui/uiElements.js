@@ -1,11 +1,11 @@
 function getElement(selector) {
-  const element = document.querySelector(selector);
+	const element = document.querySelector(selector);
 
-  if (!element) {
-    console.warn(`Elemento não encontrado: ${selector}`);
-  }
+	if (!element) {
+		console.warn(`Elemento não encontrado: ${selector}`);
+	}
 
-  return element;
+	return element;
 }
 
 export const UI_ELEMENTS = {
@@ -31,6 +31,8 @@ export const UI_ELEMENTS = {
 	shortestClickIntervalDisplay: getElement('#shortestClickIntervalDisplay'),
 	longestClickIntervalDisplay: getElement('#longestClickIntervalDisplay'),
 	timeSinceLastClickDisplay: getElement('#timeSinceLastClickDisplay'),
+	fastClickStreakDisplay: getElement('#fastClickStreakDisplay'),
+	calmClickStreakDisplay: getElement('#calmClickStreakDisplay'),
 
 	silenceArea: getElement('#silenceArea'),
 	currentSilenceDisplay: getElement('#currentSilenceDisplay'),

@@ -341,7 +341,7 @@ body {
 .silence-area {
 	position: fixed;
 	left: 32px;
-	top: 390px;
+	top: 450px;
 
 	width: min(300px, calc(100% - 64px));
 	padding: 12px 14px;

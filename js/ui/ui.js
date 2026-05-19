@@ -1,15 +1,15 @@
-import { gameState } from '../core/state.js';
-import { getResource } from '../systems/resources.js';
-import { isSystemUnlocked } from '../systems/unlocks.js';
+import {gameState} from '../core/state.js';
+import {getResource} from '../systems/resources.js';
+import {isSystemUnlocked} from '../systems/unlocks.js';
 import {
 	getMessageFeed,
 	getMessagesVersion,
 	hasMessages
 } from '../systems/messages.js';
-import { formatRhythmTime } from '../systems/rhythm.js';
-import { formatSilenceTime } from '../systems/silence.js';
+import {formatRhythmTime} from '../systems/rhythm.js';
+import {formatSilenceTime} from '../systems/silence.js';
 
-import { UI_ELEMENTS } from './uiElements.js';
+import {UI_ELEMENTS} from './uiElements.js';
 
 export function updateUI() {
 	updatePointsCounter();
@@ -144,6 +144,12 @@ function updateRhythmArea() {
 	UI_ELEMENTS.timeSinceLastClickDisplay.textContent = formatRhythmTime(
 		gameState.rhythm.timeSinceLastClick
 	);
+
+	UI_ELEMENTS.fastClickStreakDisplay.textContent =
+		gameState.rhythm.fastClickStreak;
+
+	UI_ELEMENTS.calmClickStreakDisplay.textContent =
+		gameState.rhythm.calmClickStreak;
 }
 
 function updateSilenceArea() {
