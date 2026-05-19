@@ -1,4 +1,4 @@
-import { gameState } from '../core/state.js';
+import {gameState} from '../core/state.js';
 
 export function registerRhythmClick() {
 	const currentTime = Date.now();
@@ -11,7 +11,10 @@ export function registerRhythmClick() {
 
 		updateShortestClickInterval(intervalInSeconds);
 		updateLongestClickInterval(intervalInSeconds);
-		updateClickPace(intervalInSeconds);
+
+		if (gameState.systems.rhythm) {
+			updateClickPace(intervalInSeconds);
+		}
 	}
 
 	gameState.rhythm.lastClickTime = currentTime;

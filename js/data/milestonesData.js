@@ -209,10 +209,8 @@ export const milestones = [
 		name: 'Ritmo',
 		description: 'Há um padrão na repetição.',
 
-		requirement: {
-			metric: 'ideas',
-			operator: '>=',
-			value: 5
+		condition: (state) => {
+			return state.stats.totalClicks >= 450 && state.resources.ideas >= 4;
 		},
 
 		effects: [
@@ -233,13 +231,13 @@ export const milestones = [
 		description: 'A rapidez começa a chamar atenção.',
 
 		condition: (state) => {
-			return state.systems.rhythm && state.rhythm.fastClickStreak >= 150;
+			return state.systems.rhythm && state.rhythm.fastClickStreak >= 100;
 		},
 
 		effects: [
 			{
 				type: 'showMessage',
-				text: 'Acalme-se, por favor, tenho que pensar!'
+				text: 'Acalme-se, tenho que pensar!'
 			}
 		]
 	},
@@ -247,10 +245,10 @@ export const milestones = [
 	{
 		id: 'cadence',
 		name: 'Cadência',
-		description: 'Há espaço entre um sinal e outro.',
+		description: 'Há ---espaço--- entre um sinal e outro.',
 
 		condition: (state) => {
-			return state.systems.rhythm && state.rhythm.calmClickStreak >= 3;
+			return state.systems.rhythm && state.rhythm.calmClickStreak >= 5;
 		},
 
 		effects: [
@@ -271,7 +269,7 @@ export const milestones = [
 		description: 'A ausência também começa a ser percebida.',
 
 		condition: (state) => {
-			return state.systems.rhythm && state.rhythm.timeSinceLastClick >= 20;
+			return state.systems.rhythm && state.rhythm.timeSinceLastClick >= 15;
 		},
 
 		effects: [

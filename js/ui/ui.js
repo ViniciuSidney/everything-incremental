@@ -1,11 +1,7 @@
 import {gameState} from '../core/state.js';
 import {getResource} from '../systems/resources.js';
 import {isSystemUnlocked} from '../systems/unlocks.js';
-import {
-	getMessageFeed,
-	getMessagesVersion,
-	hasMessages
-} from '../systems/messages.js';
+import {getMessageFeed, getMessagesVersion, hasMessages} from '../systems/messages.js';
 import {formatRhythmTime} from '../systems/rhythm.js';
 import {formatSilenceTime} from '../systems/silence.js';
 
@@ -27,46 +23,80 @@ function updatePointsCounter() {
 
 let lastMessageFeedSignature = '';
 let lastRenderedMessagesVersion = -1;
+const renderedMessageElements = new Map();
 
 function updateMessageFeed() {
 	const messagesUnlocked = isSystemUnlocked('messages');
-	const hasVisibleMessages = hasMessages();
+	const messageFeed = getMessageFeed();
+	const hasVisibleMessages = messageFeed.length > 0;
 
-	UI_ELEMENTS.messageFeedArea.hidden =
-		!messagesUnlocked || !hasVisibleMessages;
+	UI_ELEMENTS.messageFeedArea.hidden = !messagesUnlocked || !hasVisibleMessages;
 
 	if (!messagesUnlocked || !hasVisibleMessages) {
-		if (lastRenderedMessagesVersion !== getMessagesVersion()) {
-			UI_ELEMENTS.messageFeedList.innerHTML = '';
-			lastRenderedMessagesVersion = getMessagesVersion();
+		clearRenderedMessages();
+		return;
+	}
+
+	const currentMessageIds = new Set();
+
+	messageFeed.forEach((message) => {
+		currentMessageIds.add(message.id);
+
+		const existingElement = renderedMessageElements.get(message.id);
+
+		if (!existingElement) {
+			createMessageElement(message);
+			return;
 		}
 
+		updateMessageElement(existingElement, message);
+	});
+
+	removeOldMessageElements(currentMessageIds);
+}
+
+function createMessageElement(message) {
+	const item = document.createElement('li');
+
+	item.dataset.messageId = message.id;
+	item.classList.add('message-feed-item');
+	item.textContent = message.text;
+
+	if (message.isLeaving) {
+		item.classList.add('is-leaving');
+	}
+
+	renderedMessageElements.set(message.id, item);
+	UI_ELEMENTS.messageFeedList.appendChild(item);
+}
+
+function updateMessageElement(element, message) {
+	if (message.isLeaving) {
+		element.classList.add('is-leaving');
 		return;
 	}
 
-	const currentMessagesVersion = getMessagesVersion();
+	element.classList.remove('is-leaving');
+}
 
-	if (currentMessagesVersion === lastRenderedMessagesVersion) {
+function removeOldMessageElements(currentMessageIds) {
+	renderedMessageElements.forEach((element, messageId) => {
+		if (currentMessageIds.has(messageId)) {
+			return;
+		}
+
+		element.remove();
+		renderedMessageElements.delete(messageId);
+	});
+}
+
+function clearRenderedMessages() {
+	if (renderedMessageElements.size === 0) {
 		return;
 	}
-
-	lastRenderedMessagesVersion = currentMessagesVersion;
 
 	UI_ELEMENTS.messageFeedList.innerHTML = '';
-
-	getMessageFeed().forEach((message) => {
-		const item = document.createElement('li');
-
-		item.classList.add('message-feed-item');
-
-		if (message.isLeaving) {
-			item.classList.add('is-leaving');
-		}
-
-		item.textContent = message.text;
-
-		UI_ELEMENTS.messageFeedList.appendChild(item);
-	});
+	renderedMessageElements.clear();
 }
 
 function updateObservationArea() {
@@ -79,10 +109,8 @@ function updateObservationArea() {
 	}
 
 	UI_ELEMENTS.totalClicksDisplay.textContent = gameState.stats.totalClicks;
-	UI_ELEMENTS.totalPointsEarnedDisplay.textContent =
-		gameState.stats.totalPointsEarned;
-	UI_ELEMENTS.unlockedMilestonesDisplay.textContent =
-		gameState.progression.unlockedMilestones.length;
+	UI_ELEMENTS.totalPointsEarnedDisplay.textContent = gameState.stats.totalPointsEarned;
+	UI_ELEMENTS.unlockedMilestonesDisplay.textContent = gameState.progression.unlockedMilestones.length;
 }
 
 function updateIdeasArea() {
@@ -129,27 +157,24 @@ function updateRhythmArea() {
 		return;
 	}
 
-	UI_ELEMENTS.lastClickIntervalDisplay.textContent = formatRhythmTime(
-		gameState.rhythm.lastClickInterval
-	);
+	const silenceUnlocked = isSystemUnlocked('silence');
 
-	UI_ELEMENTS.shortestClickIntervalDisplay.textContent = formatRhythmTime(
-		gameState.rhythm.shortestClickInterval
-	);
+	UI_ELEMENTS.lastClickIntervalDisplay.textContent = formatRhythmTime(gameState.rhythm.lastClickInterval);
 
-	UI_ELEMENTS.longestClickIntervalDisplay.textContent = formatRhythmTime(
-		gameState.rhythm.longestClickInterval
-	);
+	UI_ELEMENTS.shortestClickIntervalDisplay.textContent = formatRhythmTime(gameState.rhythm.shortestClickInterval);
 
-	UI_ELEMENTS.timeSinceLastClickDisplay.textContent = formatRhythmTime(
-		gameState.rhythm.timeSinceLastClick
-	);
+	UI_ELEMENTS.longestClickIntervalRow.hidden = silenceUnlocked;
+	UI_ELEMENTS.timeSinceLastClickRow.hidden = silenceUnlocked;
 
-	UI_ELEMENTS.fastClickStreakDisplay.textContent =
-		gameState.rhythm.fastClickStreak;
+	if (!silenceUnlocked) {
+		UI_ELEMENTS.longestClickIntervalDisplay.textContent = formatRhythmTime(gameState.rhythm.longestClickInterval);
 
-	UI_ELEMENTS.calmClickStreakDisplay.textContent =
-		gameState.rhythm.calmClickStreak;
+		UI_ELEMENTS.timeSinceLastClickDisplay.textContent = formatRhythmTime(gameState.rhythm.timeSinceLastClick);
+	}
+
+	UI_ELEMENTS.fastClickStreakDisplay.textContent = gameState.rhythm.fastClickStreak;
+
+	UI_ELEMENTS.calmClickStreakDisplay.textContent = gameState.rhythm.calmClickStreak;
 }
 
 function updateSilenceArea() {
@@ -161,11 +186,7 @@ function updateSilenceArea() {
 		return;
 	}
 
-	UI_ELEMENTS.currentSilenceDisplay.textContent = formatSilenceTime(
-		gameState.rhythm.timeSinceLastClick
-	);
+	UI_ELEMENTS.currentSilenceDisplay.textContent = formatSilenceTime(gameState.rhythm.timeSinceLastClick);
 
-	UI_ELEMENTS.longestSilenceDisplay.textContent = formatSilenceTime(
-		gameState.silence.longestSilence
-	);
+	UI_ELEMENTS.longestSilenceDisplay.textContent = formatSilenceTime(gameState.silence.longestSilence);
 }

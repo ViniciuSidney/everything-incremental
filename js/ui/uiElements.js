@@ -36,5 +36,8 @@ export const UI_ELEMENTS = {
 
 	silenceArea: getElement('#silenceArea'),
 	currentSilenceDisplay: getElement('#currentSilenceDisplay'),
-	longestSilenceDisplay: getElement('#longestSilenceDisplay')
+	longestSilenceDisplay: getElement('#longestSilenceDisplay'),
+
+	longestClickIntervalRow: getElement('#longestClickIntervalRow'),
+	timeSinceLastClickRow: getElement('#timeSinceLastClickRow'),
 };

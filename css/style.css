@@ -109,71 +109,72 @@ body {
 /* ============================= */
 
 .message-feed-area {
-  position: fixed;
-  right: 32px;
-  bottom: 32px;
+	position: fixed;
+	right: 32px;
+	bottom: 32px;
 
-  width: min(340px, calc(100% - 64px));
+	width: min(340px, calc(100% - 64px));
 
-  pointer-events: none;
-  z-index: 20;
+	pointer-events: none;
+	z-index: 20;
 }
 
 .message-feed-list {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 8px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	gap: 8px;
 
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 
-  list-style: none;
+	list-style: none;
 }
 
 .message-feed-item {
-  padding: 10px 14px;
+	padding: 10px 14px;
 
-  border: 1px solid #999999;
-  border-radius: 4px;
+	border: 1px solid #999999;
+	border-radius: 4px;
 
-  background: #f8f8f8;
-  color: #222222;
+	background: #f8f8f8;
+	color: #222222;
 
-  font-size: 0.9rem;
-  line-height: 1.35;
+	font-size: 0.9rem;
+	line-height: 1.35;
 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 
-  animation: messageEnter 0.22s ease-out both;
+	animation: messageEnter 0.22s ease-out both;
+	will-change: opacity, transform;
 }
 
 .message-feed-item.is-leaving {
-  animation: messageExit 0.25s ease-in both;
+	animation: messageExit 0.25s ease-in both;
 }
 
 @keyframes messageEnter {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
+	from {
+		opacity: 0;
+		transform: translateY(8px);
+	}
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
 }
 
 @keyframes messageExit {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
+	from {
+		opacity: 1;
+		transform: translateY(0);
+	}
 
-  to {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
+	to {
+		opacity: 0;
+		transform: translateY(-8px);
+	}
 }
 
 /* ============================= */
