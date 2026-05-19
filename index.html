@@ -1,75 +1,93 @@
 <!doctype html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Everything Incremental</title>
+		<title>Everything Incremental</title>
 
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
-  <body>
-    <main class="game-screen">
-      <section class="counter-area">
-        <div class="points-display">
-          Pontos: <span id="pointsCounter">0</span>
-        </div>
-      </section>
+		<link rel="stylesheet" href="css/style.css" />
+	</head>
+	<body>
+		<main class="game-screen">
+			<section class="counter-area">
+				<div class="points-display">
+					Pontos: <span id="pointsCounter">0</span>
+				</div>
+			</section>
 
-      <section class="action-area">
-        <button id="mainButton" class="main-button">gerar ponto</button>
-      </section>
+			<section class="action-area">
+				<button id="mainButton" class="main-button">gerar ponto</button>
+			</section>
 
-      <section id="observationArea" class="observation-area" hidden>
-        <h2>Observação</h2>
+			<section id="observationArea" class="observation-area" hidden>
+				<h2>Observação</h2>
 
-        <div class="stat-list">
-          <p>Cliques totais: <span id="totalClicksDisplay">0</span></p>
-          <p>
-            Pontos totais ganhos:
-            <span id="totalPointsEarnedDisplay">0</span>
-          </p>
-          <p>
-            Marcos desbloqueados:
-            <span id="unlockedMilestonesDisplay">0</span>
-          </p>
-        </div>
-      </section>
+				<div class="stat-list">
+					<p>Cliques totais: <span id="totalClicksDisplay">0</span></p>
+					<p>
+						Pontos totais ganhos:
+						<span id="totalPointsEarnedDisplay">0</span>
+					</p>
+					<p>
+						Marcos desbloqueados:
+						<span id="unlockedMilestonesDisplay">0</span>
+					</p>
+				</div>
+			</section>
 
-      <section id="rhythmArea" class="rhythm-area" hidden>
-        <h2>Ritmo</h2>
+			<section id="rhythmArea" class="rhythm-area" hidden>
+				<h2>Ritmo</h2>
 
-        <div class="stat-list">
-          <p>Último intervalo: <span id="lastClickIntervalDisplay">-</span></p>
-          <p>
-            Menor intervalo: <span id="shortestClickIntervalDisplay">-</span>
-          </p>
-          <p>
-            Maior intervalo: <span id="longestClickIntervalDisplay">-</span>
-          </p>
-          <p>
-            Tempo sem clicar: <span id="timeSinceLastClickDisplay">0.00s</span>
-          </p>
-        </div>
-      </section>
+				<div class="stat-list">
+					<p>
+						Último intervalo: <span id="lastClickIntervalDisplay">-</span>
+					</p>
+					<p>
+						Menor intervalo:
+						<span id="shortestClickIntervalDisplay">-</span>
+					</p>
+					<p>
+						Maior intervalo:
+						<span id="longestClickIntervalDisplay">-</span>
+					</p>
+					<p>
+						Tempo sem clicar:
+						<span id="timeSinceLastClickDisplay">0.00s</span>
+					</p>
+				</div>
+			</section>
 
-      <section id="ideasArea" class="ideas-area" hidden>
-        <div class="ideas-display">
-          Ideias: <span id="ideasCounter">0</span>
-        </div>
-      </section>
+			<section id="silenceArea" class="silence-area" hidden>
+				<h2>Silêncio</h2>
 
-      <section id="recordsArea" class="records-area" hidden>
-        <h2>Registros</h2>
+				<div class="stat-list">
+					<p>
+						Silêncio atual: <span id="currentSilenceDisplay">0.00s</span>
+					</p>
+					<p>
+						Maior silêncio: <span id="longestSilenceDisplay">0.00s</span>
+					</p>
+				</div>
+			</section>
 
-        <ul id="recordsList" class="records-list"></ul>
-      </section>
+			<section id="ideasArea" class="ideas-area" hidden>
+				<div class="ideas-display">
+					Ideias: <span id="ideasCounter">0</span>
+				</div>
+			</section>
 
-      <section id="messageFeedArea" class="message-feed-area" hidden>
-        <ul id="messageFeedList" class="message-feed-list"></ul>
-      </section>
-    </main>
+			<section id="recordsArea" class="records-area" hidden>
+				<h2>Registros</h2>
 
-    <script type="module" src="js/main.js"></script>
-  </body>
+				<ul id="recordsList" class="records-list"></ul>
+			</section>
+
+			<section id="messageFeedArea" class="message-feed-area" hidden>
+				<ul id="messageFeedList" class="message-feed-list"></ul>
+			</section>
+		</main>
+
+		<script type="module" src="js/main.js"></script>
+	</body>
 </html>

@@ -335,6 +335,34 @@ body {
 }
 
 /* ============================= */
+/* Silêncio */
+/* ============================= */
+
+.silence-area {
+	position: fixed;
+	left: 32px;
+	top: 390px;
+
+	width: min(300px, calc(100% - 64px));
+	padding: 12px 14px;
+
+	border: 1px solid #999999;
+	border-radius: 4px;
+
+	background: #f8f8f8;
+	color: #222222;
+
+	font-size: 0.9rem;
+}
+
+.silence-area h2 {
+	margin-bottom: 8px;
+
+	font-size: 1rem;
+	font-weight: 600;
+}
+
+/* ============================= */
 /* Estados visuais */
 /* ============================= */
 
@@ -342,6 +370,7 @@ body[data-visual-level="0"] .points-display,
 body[data-visual-level="0"] .main-button,
 body[data-visual-level="0"] .observation-area,
 body[data-visual-level="0"] .rhythm-area,
+body[data-visual-level="0"] .silence-area,
 body[data-visual-level="0"] .ideas-display,
 body[data-visual-level="0"] .records-area,
 body[data-visual-level="0"] .message-feed-item {
@@ -358,6 +387,7 @@ body[data-visual-level="1"] .ideas-display {
 
 body[data-visual-level="1"] .observation-area,
 body[data-visual-level="1"] .rhythm-area,
+body[data-visual-level="1"] .silence-area,
 body[data-visual-level="1"] .records-area,
 body[data-visual-level="1"] .message-feed-item {
 	border-radius: 12px;
